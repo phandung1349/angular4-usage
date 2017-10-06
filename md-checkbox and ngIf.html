@@ -1,0 +1,9 @@
+<md-checkbox
+  #showDetails
+  [value]=""
+  [checked]="isChecked"
+  (change)="onChange($event)">
+  Subscribe to newsletter
+</md-checkbox>
+
+<div *ngIf="showDetails.checked">Some details...</div>
