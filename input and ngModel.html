@@ -1,0 +1,14 @@
+<form class="example-form">
+  <md-form-field class="example-full-width">
+    <input 
+    ngModel
+    #username="ngModel"
+    name="username" 
+    mdInput placeholder="username" value="" type="text" required="required">
+    <md-hint>Type an unique name</md-hint>
+    <span mdSuffix>@domain.com</span>
+    <span mdPrefix>admin.</span>
+    <md-error *ngIf="username.invalid && username.errors.required">
+    The username field is required</md-error>
+  </md-form-field>
+</form>
