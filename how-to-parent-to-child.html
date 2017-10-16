@@ -1,0 +1,36 @@
+#parent.component.ts
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-parent',
+  template:  `
+  <button (click)="child.value = child.value + 1">Add</button>
+  <app-child #child></app-child>
+  `
+})
+
+export class ParentComponent{}
+
+#child.component.ts
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  template:  `
+  <h3>{{value}}</h3>
+  `
+})
+
+export class ChildComponent {
+  value = 0;
+}
+
+#app.component.html
+
+<app-parent><app-parent>
+
+
+
+tag:#parenttochild
