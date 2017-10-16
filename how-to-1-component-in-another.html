@@ -1,0 +1,43 @@
+(person has component param)
+#person.component.ts
+
+import { Component, OnInit, Input } from '@angular/core';
+
+export class PersonComponent implements OnInit {
+  @Input() name:String;
+  @Input() age:Number;
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+}
+
+#person.component.html
+
+<h3>Name: {{name}}</h3>
+<p>Age: {{age}}</p>
+
+#person-list.component.ts
+
+export class PersonListComponent implements OnInit {
+  People=[
+    {name: "la", age:11},
+    {name: "la", age:14},
+    {name: "ly", age:38}
+  ]
+  constructor() { }
+
+  ngOnInit() {
+  }
+}
+
+#person-list.component.html
+(person component in person-list component)
+<ng-container *ngFor="let person of People">
+  <app-person [name]="person.name" [age]="person.age"></app-person>
+</ng-container>
+
+#app.component.html
+
+<app-person-list><app-person-list>
