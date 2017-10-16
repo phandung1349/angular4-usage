@@ -1,0 +1,79 @@
+#word.component.html
+
+<div [hidden]="!isShowForm">
+<input placeholder="English" [(ngModel)]="newEn"/><br>
+<input placeholder="Vietnamese" [(ngModel)]="newVn"/>
+<br>
+</div>
+<button (click)="addWord()">Add This Word</button>
+<br><br>
+<select [(ngModel)]="filterStatus">
+  <option value="all">view all</option>
+  <option value="memorized">memorized</option>
+  <option value="not_memorized">not memorized</option>
+</select>
+<div *ngFor="let word of words;">
+  <div class="word" *ngIf="getShowStatus(word.memorized)">
+    <h3 [ngStyle]="{color:word.memorized?'green':'red'}">{{word.en}}</h3>
+    <p>{{word.vn}}</p>
+    <button (click)="removeWord(word.id)">Delete</button>
+  </div>
+</div>
+
+#word.component.ts
+
+export class WordComponent implements OnInit {
+  filterStatus = "all";
+  newEn="";
+  newVn="";
+  isShowForm = false;
+  isAdded = false;
+  words = [
+    { id: 1, en: 'action', vn: 'hành động', memorized: true },
+    { id: 2, en: 'actor', vn: 'diễn viên', memorized: false },
+    { id: 3, en: 'activity', vn: 'hoạt động', memorized: true },
+    { id: 4, en: 'active', vn: 'chủ động', memorized: true },
+    { id: 5, en: 'bath', vn: 'tắm', memorized: false },
+    { id: 6, en: 'bedroom', vn: 'phòng ngủ', memorized: true }
+];
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  addWord(){
+    this.isShowForm = !this.isShowForm;
+    if(this.isAdded == false){
+      this.isAdded = true;
+      return;
+    }
+    if(this.isAdded == true){
+      if(this.newEn === '' || this.newVn === ''){
+        this.isAdded = false;
+        return;
+      }
+      this.words.unshift({
+        id: this.words.length + 1,
+        en: this.newEn,
+        vn: this.newVn,
+        memorized: false
+      })
+      this.newEn = '';
+      this.newVn = '';
+      this.isAdded = false;
+    }
+  }
+
+  removeWord(id: number){
+    const index = this.words.findIndex(word => word.id === id);
+    this.words.splice(index, 1);
+  }
+
+  getShowStatus(memorized:boolean){
+    const view_all = this.filterStatus === 'all';
+    const view_memorized = this.filterStatus === 'memorized' && memorized;
+    const view_not_memorized = this.filterStatus === 'not_memorized' && !memorized;
+    return view_all || view_memorized || view_not_memorized;
+  }
+}
