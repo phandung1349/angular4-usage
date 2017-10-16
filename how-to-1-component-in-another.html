@@ -34,6 +34,7 @@ export class PersonListComponent implements OnInit {
 
 #person-list.component.html
 (person component in person-list component)
+
 <ng-container *ngFor="let person of People">
   <app-person [name]="person.name" [age]="person.age"></app-person>
 </ng-container>
