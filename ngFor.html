@@ -1,0 +1,9 @@
+<li *ngFor="let user of userObservable | async as users; index as i; first as isFirst">
+   {{i}}/{{users.length}}. {{user}} <span *ngIf="isFirst">default</span>
+</li>
+
+
+We can use:
+index as i; first as isFirst; last as isLast;
+
+note: first, last are boolean
