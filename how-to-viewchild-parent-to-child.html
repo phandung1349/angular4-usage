@@ -1,0 +1,41 @@
+#parent.component.ts
+
+import { Component, ViewChild } from '@angular/core';
+import { ChildComponent } from './child.component';
+
+@Component({
+  selector: 'app-parent',
+  template:  `
+  <button (click)="onAddForChild()">Add</button>
+  <app-child #child></app-child>
+  `
+})
+
+export class ParentComponent{
+  @ViewChild(ChildComponent)
+  myChild:ChildComponent;
+
+  onAddForChild(){
+    this.myChild.value++;
+  }
+}
+
+#child.component.ts
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  template:  `
+  <h3>{{value}}</h3>
+  `
+})
+
+export class ChildComponent {
+  value = 0;
+}
+
+#app.component.html
+
+<app-parent><app-parent>
+
