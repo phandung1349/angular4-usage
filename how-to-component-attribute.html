@@ -1,0 +1,43 @@
+#person.component.ts
+
+import { Component, OnInit, Input } from '@angular/core';
+
+export class PersonComponent implements OnInit {
+
+  @Input() name:String;
+  @Input() age:Number;
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+}
+
+#app.component.html
+
+<app-person [name]="" [age]=""></app-person>
+<app-person name="betho" age="14"></app-person>
+
+ #ANOTHER
+ 
+ #.ts
+ 
+ class JokeComponent {
+  @Input() joke: Joke;
+}
+
+#app.component.html
+ <joke *ngFor="let j of jokes" [data]="j"></joke>
+
+ note: 
+ 1. Joke: object
+ 2. <joke></joke>: selector
+ 
+ or
+ 
+ class JokeComponent {
+  @Input('joke') data: Joke;
+}
+
+<joke *ngFor="let j of jokes" [joke]="j"></joke>
+ 
