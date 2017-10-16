@@ -1,0 +1,29 @@
+#app.component.html
+
+<app-person name="bela" age="11"></app-person>
+<app-person name="betho" age="14"></app-person>
+
+#person.component.html
+
+<h3>Name: {{name}}</h3>
+<p>Age: {{age}}</p>
+
+#person.component.ts
+
+import { Component, OnInit, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-person',
+  templateUrl: './person.component.html',
+  styleUrls: ['./person.component.css']
+})
+export class PersonComponent implements OnInit {
+
+  @Input() name:String;
+  @Input() age:Number;
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+}
