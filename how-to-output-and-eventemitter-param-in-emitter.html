@@ -1,0 +1,51 @@
+#parent.component.ts
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-parent',
+  template:  `
+  <h3>{{value}}</h3>
+  <app-child (myClick)="changeValue($event)"></app-child>
+  `
+})
+
+export class ParentComponent{
+  value = 0;
+  changeValue(isAdd:boolean){
+    if(isAdd){
+      this.value = this.value + 1;
+    } else {
+      this.value = this.value - 1;
+    }
+  }
+}
+
+#child.component.ts
+
+import { Component, EventEmitter, Output } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  template:  `
+  <button (click)="addForParent()">Add</button>
+  <button (click)="subForParent()">Sub</button>
+  `
+})
+
+export class ChildComponent {
+  // @Output() myClick = new EventEmitter();
+  @Output() myClick = new EventEmitter<boolean>();
+
+  addForParent(){
+    this.myClick.emit(true);
+  }
+
+  subForParent(){
+    this.myClick.emit(false);
+  }
+}
+
+#app.component.html
+
+<app-parent><app-parent>
