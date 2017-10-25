@@ -1,0 +1,51 @@
+# app.component.html
+
+<h1>{{getData() | json}}</h1>
+
+# app.component.ts
+
+import { Component, OnInit } from '@angular/core';
+import { Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  data;
+  constructor(private http : HttpClient){ }
+  ngOnInit(){
+    this.http.get('http://ip.jsontest.com/')
+    .subscribe(data => this.data = data)
+  }
+  getData(){
+    return this.data;
+  }
+}
+
+# app.module.ts
+
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule, HttpClientModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+platformBrowserDynamic().bootstrapModule(AppModule);
+
+
+# note: use HttpClient
