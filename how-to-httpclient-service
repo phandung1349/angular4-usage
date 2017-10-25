@@ -47,5 +47,3 @@ import { AppComponent } from './app.component';
 export class AppModule { }
 platformBrowserDynamic().bootstrapModule(AppModule);
 
-
-# note: use HttpClient
