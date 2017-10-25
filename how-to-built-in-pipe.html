@@ -1,0 +1,11 @@
+### use async
+
+# app.component.html
+<h1>{{bela | async}}</h1>
+
+# app.component.ts
+
+bela = Promise.resolve("bela");
+
+
+#tag:async
