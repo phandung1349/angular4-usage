@@ -2,6 +2,9 @@
 
 <h1>{{getData() | json}}</h1>
 
+## data in browser
+{ "hello": "world" }
+
 # app.component.ts
 
 import { Component, OnInit } from '@angular/core';
