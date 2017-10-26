@@ -1,2 +1,55 @@
-???
-v35
+# app.component.html
+
+<h1>{{getData() | json}}</h1>
+
+## data in browser
+
+
+
+# app.component.ts
+
+import { Component, OnInit } from '@angular/core';
+import { Input } from '@angular/core';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  data;
+  constructor(private http : Http){ }
+  ngOnInit(){
+    this.http.get('https://www.mocky.io/v2/5185415ba171ea3a00704eed')
+    .toPromise()
+    .then(res => res.json())
+    .then(resd => this.data = resd);
+  }
+  getData(){
+    return this.data;
+  }
+}
+
+# app.module.ts
+
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule, HttpModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+platformBrowserDynamic().bootstrapModule(AppModule);
