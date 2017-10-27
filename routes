@@ -1,0 +1,44 @@
+1. config each route in imports:[]
+
+2. use an array
+
+# constants.ts
+
+export class Constants {
+    
+    public static APP_ROUTES = {
+        analytics: 'analytics',
+        process_analytics: 'process-analytics',
+        cbm: 'cbm',
+        ...
+        }
+        
+    public static ROUTER_LINK = {
+        home: '/' + Constants.APP_ROUTES.home,
+
+        analytics: '/' + Constants.APP_ROUTES.analytics,
+        process_analytics: '/' + Constants.APP_ROUTES.process_analytics,
+        cbm: '/' + Constants.APP_ROUTES.cbm,
+        ...
+        }
+        
+# app.module.ts
+
+const appRoutes: Routes = [
+    { path: Constants.APP_ROUTES.home, component: HomeComponent, data: { title: 'HOME' } },
+    { path: Constants.APP_ROUTES.process_analytics, component: ProcessAnalyticsComponent },
+    { path: Constants.APP_ROUTES.analytics, component: AnalyticsComponent, data: { title: 'Analytics' } },
+    ...
+    ]
+
+...
+imports: [
+        RouterModule.forRoot(
+            appRoutes,
+            {
+                enableTracing: false,
+                useHash: true
+            } // <-- debugging purposes only
+        ),
+        ...
+        ]
