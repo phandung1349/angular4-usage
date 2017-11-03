@@ -1,0 +1,8 @@
+# app.component.html
+
+<h2>{{showMessage()}}</h2>
+<input type="text" placeholder="Search for city" 
+[(ngModel)]="city"
+(keyup)="onKey($event)"
+>
+<span *ngIf="city === ''">Type city</span>
