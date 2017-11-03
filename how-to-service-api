@@ -1,0 +1,107 @@
+# app.component.html
+
+<h2>{{showMessage()}}</h2>
+<input type="text" placeholder="Search for city" 
+[(ngModel)]="city"
+(keyup)="onKey($event)"
+>
+<span *ngIf="city === ''">Type city</span>
+
+# app.component.ts
+
+import { Component, OnInit } from '@angular/core';
+import { WeatherService } from "./weather.service";
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  providers: [WeatherService]
+})
+export class AppComponent implements OnInit{
+  result;
+  city='SaiGon';
+  hardCity='SaiGon';
+  temp;
+  isLoading = false;
+  constructor(private _WeatherService : WeatherService) { }
+
+  ngOnInit(){
+  	this.getWeather();
+  }
+
+  getWeather(){
+  	this.isLoading = true;
+  	this.hardCity = this.city;
+  	this._WeatherService.getWeather(this.city)
+    // .then(weather => {
+    // 	this.result = weather['main'];
+    // 	this.temp = this.result.temp;
+    // }, err=>{this.temp = 'Not a City'});
+
+    // error catching second version
+    .then(weather => {
+    	this.result = weather['main'];
+    	this.temp = this.result.temp;
+    	this.isLoading = false;
+    })
+    .catch(err => this.temp = 'Not a City');
+  }
+
+  onKey(e){
+  	if(this.city != this.hardCity){
+  		this.temp = '';
+  	}
+  	this.getWeather();
+  }
+
+  showMessage(){
+  	// if(this.isLoading){
+  	// 	return 'Loading...'
+  	// }
+  	return this.city === '' ? 'No City' : (this.city + ': ' + this.temp);
+  }
+}
+
+# weather.service.ts
+
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+
+@Injectable()
+
+export class WeatherService {
+  constructor(private http : Http) {}
+  getWeather(city) {
+    return this.http.get('http://api.openweathermap.org/data/2.5/weather?appid=46d4235706165f6d793689d8c03aaf56&units=metric&q='+city)
+    .toPromise()
+    .then(res => res.json())
+    .catch(err => console.log(err));
+  }
+}
+
+# app.module.ts
+
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
+import { AppComponent } from './app.component';
+import { WeatherService } from "./weather.service";
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule, HttpModule, FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+platformBrowserDynamic().bootstrapModule(AppModule);
+
