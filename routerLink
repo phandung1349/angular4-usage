@@ -1,0 +1,41 @@
+# component.html
+
+<div class="common_button_top_right" routerLink="{{routerLink.setting_users_add}}">
+    <div  mdTooltip="Add">
+       <md-icon>add</md-icon>
+    </div>
+</div>
+
+# module.ts
+import { RouterLink } from '@angular/router';
+
+# component.ts
+routerLink = {
+    setting_users_add: Constants.ROUTER_LINK.setting_users_add,
+    setting_users_edit: Constants.ROUTER_LINK.setting_users_edit,
+    setting_users_changepassword: Constants.ROUTER_LINK.setting_users_changepassword,
+    setting_users_resetpassword: Constants.ROUTER_LINK.setting_users_resetpassword,
+  }
+
+# constants.ts
+export class Constants {
+
+public static APP_ROUTES = {
+
+setting_users_add: 'setting/users/add',...,
+
+}
+
+public static ROUTER_LINK = {
+setting_users_add: '/' + Constants.APP_ROUTES.setting_users_add,...,
+}
+
+}
+
+
+# note: routerLink:
+1. go to a page
+2. go to a page derive APP_ROUTEs
+3. constants.ts in app folder
+
+
