@@ -26,4 +26,26 @@
 # CdkTableModule
   https://material.angular.io/guide/cdk-table
   
+# ChartsModule
+
+# NgGridModule
+
+# MaterialModule
+  import { MaterialModule } from '@angular/material';
+  
+# RoundProgressModule
+  https://github.com/crisbeto/angular-svg-round-progressbar
+ 
+# ng-circle-progress
+  https://www.npmjs.com/package/ng-circle-progress
+
+# NguiDatetimePickerModule
+  https://github.com/ng2-ui/datetime-picker/blob/master/README.md
+  
+# ngx-bootstrap
+  https://valor-software.com/ngx-bootstrap/#/progressbar
+  imports:[...,
+  TimepickerModule.forRoot(),
+  ModalModule.forRoot(),...]
+ 
 # 
