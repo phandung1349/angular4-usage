@@ -1,3 +1,5 @@
+# checkbox
+
 <md-checkbox
   #showDetails
   [value]=""
@@ -7,3 +9,8 @@
 </md-checkbox>
 
 <div *ngIf="showDetails.checked">Some details...</div>
+
+# 
+<li *ngIf="animal">
+    You chose: <i>{{animal}}</i>
+</li>
