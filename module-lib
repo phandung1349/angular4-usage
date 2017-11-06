@@ -1,3 +1,5 @@
+# https://teradata.github.io/covalent/#/
+
 # breadcrumbs
   npm install --save ng2-breadcrumbs
   link: 
@@ -6,3 +8,6 @@
    
 # FlexLayoutModule
   https://github.com/angular/flex-layout/wiki/Using-Angular-CLI
+# MdNativeDateModule
+  import { MdNativeDateModule } from '@angular/material';
+# 
