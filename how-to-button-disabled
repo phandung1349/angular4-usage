@@ -3,7 +3,7 @@
 <button [disabled]="row.username==username">button</button>
 
 <button [disabled]="buttonState()">button</button>
-buttonState(): return true or false
+(# note: buttonState(): return true or false)
 
 <button [ngStyle]="{disabled : !isValid}" (click)="onConfirm()">Confirm</button>
 
