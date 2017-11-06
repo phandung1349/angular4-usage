@@ -1,0 +1,33 @@
+# way 1: https://angular.io/tutorial/toh-pt5
+
+# way 2: an array
+
+# app.module.ts
+import { RouterModule, Routes } from '@angular/router';
+
+  # import
+imports: [
+        RouterModule.forRoot(
+            appRoutes,
+            {
+                enableTracing: false,
+                useHash: true
+            } // <-- debugging purposes only
+        ),
+        ...]
+
+  # array
+const appRoutes: Routes = [
+    { path: Constants.APP_ROUTES.process_analytics, component: ProcessAnalyticsComponent, data: { title: 'Process Analytics', isShowTitle: false } },
+    { path: Constants.APP_ROUTES.home, component: HomeComponent, data: { title: 'HOME' } },
+    { path: Constants.APP_ROUTES.loading, component: LoadingComponent },
+    ...,...]
+
+
+# redirect if path = null/empty
+{ path: '', redirectTo: '/home', pathMatch: 'full' },(add to array above)
+
+# note: 
+1. we have file Constants.ts in which define APP_ROUTES
+
+2. route can or cannot title(data: { title: 'HOME' })
