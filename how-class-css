@@ -1,0 +1,4 @@
+[class.user-current]="row.username==username"
+
+class: syntax
+user-current: a css class
