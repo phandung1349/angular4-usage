@@ -1,0 +1,63 @@
+# service.ts
+
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
+
+import { Observable } from 'rxjs';
+
+import { Injectable } from '@angular/core';
+import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+
+import { API_Configuration } from './../constants';
+import { Strings } from './../common';
+
+import { CommonService } from './common.service';
+
+
+export class AlertsService extends CommonService {
+  // get alerts list
+  get_alerts(page, size, sortBy,sortingOrder): Promise<any> {
+    let url = API_Configuration.API_URLS.ALERT + '?sort='+sortBy+','+sortingOrder+'&';
+    return this.getRequest(url, this.getHeaderDefault(), {
+        page: page - 1,
+        size: size
+    });
+  }
+  
+  //delete an alert
+  delete(id: number) {
+    return this.deleteRequest(API_Configuration.API_URLS.ALERT + id);
+  }
+  
+}
+
+# common.service.ts
+export class CommonService {
+protected getHeaderDefault() {
+...
+        return new Headers(
+            {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + Tokens.getAccessToken(),
+            }
+        );
+    }
+    ...
+}
+
+# config API urls
+
+import { Injectable } from '@angular/core';
+import { StompConfig } from '@stomp/ng2-stompjs';
+
+@Injectable()
+export class API_Configuration {
+    public static SERVER = 'http://172.18.15.18:9090/';
+    public static API_URL = 'api/v1/';
+    public static SERVER_WITH_API_URL = API_Configuration.SERVER + API_Configuration.API_URL;
+    public static API_URLS = {
+      ALERT: API_Configuration.SERVER_WITH_API_URL + 'setting/alerts/',(alerts list)
+    }
+    
+ 
