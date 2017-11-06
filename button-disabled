@@ -1,0 +1,3 @@
+<button [disabled]="buttonState()">button</button>
+
+buttonState(): return true or false
