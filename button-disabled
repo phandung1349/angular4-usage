@@ -1,3 +1,9 @@
-<button [disabled]="buttonState()">button</button>
+<button [disabled]="true">button</button>
 
+<button [disabled]="buttonState()">button</button>
 buttonState(): return true or false
+
+<button [ngStyle]="{disabled : !isValid}" (click)="onConfirm()">Confirm</button>
+
+<button [ngClass]="{disabled : !isValid}" (click)="isValid && onConfirm()">Confirm</button>
+
