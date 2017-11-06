@@ -60,4 +60,19 @@ export class API_Configuration {
       ALERT: API_Configuration.SERVER_WITH_API_URL + 'setting/alerts/',(alerts list)
     }
     
- 
+# .ts(get data from server)
+get_alerts(page, size, sortBy, sortingOrder) {
+        this.currentPage = page;
+        this.selectedPageSize = size;
+        this.sortBy = sortBy;
+        this.sortingOrder = sortingOrder;
+
+        this._AlertsService.get_alerts(page, size, sortBy, sortingOrder).then(alertsList => {
+            this.dataCustomPaging.total = alertsList['total'];
+            this.totalRecord = this.filteredTotal = alertsList['total']
+            this.dataTable = alertsList['hits'];
+            this.filteredData = this.dataTable;
+        });
+    }
+  
+
