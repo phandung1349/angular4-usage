@@ -21,6 +21,7 @@ const appRoutes: Routes = [
     { path: Constants.APP_ROUTES.process_analytics, component: ProcessAnalyticsComponent, data: { title: 'Process Analytics', isShowTitle: false } },
     { path: Constants.APP_ROUTES.home, component: HomeComponent, data: { title: 'HOME' } },
     { path: Constants.APP_ROUTES.loading, component: LoadingComponent },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
     ...,...]
 
 
