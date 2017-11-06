@@ -45,7 +45,7 @@
 # ngx-bootstrap
   https://valor-software.com/ngx-bootstrap/#/progressbar
   imports:[...,
-  TimepickerModule.forRoot(),
-  ModalModule.forRoot(),...]
+  TimepickerModule.forRoot()(???),
+  ModalModule.forRoot()(???),...]
  
 # 
