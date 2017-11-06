@@ -1,5 +1,7 @@
 <button [disabled]="true">button</button>
 
+<button [disabled]="row.username==username">button</button>
+
 <button [disabled]="buttonState()">button</button>
 buttonState(): return true or false
 
