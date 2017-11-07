@@ -1,0 +1,115 @@
+# .component.ts
+(component call dialog)
+
+constructor(public dialog: MatDialog) {}
+
+  # (function open dialog)
+add_item() {
+        let new_data = {
+            id: null,
+            name: '',
+            description: '',
+            author: '',
+        }
+        var dialogRef = this.dialog.open(DialogAddComponent, {
+            width: '50%',
+            // height: '300px',
+            data: {
+                title: 'Add New Dashboard',
+                fields: {
+                    all_data: new_data,
+                    config: [
+                        { name: 'name', label: 'Name', type: FormControl.Input, validate: true },
+                        // { name: 'author', label: 'Author', type: FormControl.Input },
+                        { name: 'description', label: 'Description', type: FormControl.Input },
+                    ]
+                },
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this._DashboardService.addDashboard(new_data).then(result => {
+                    this.get_dashboards(this.currentPage, this.selectedPageSize, this.sortBy, this.sortingOrder);
+                    this.dialog_all.notify_message('Add Successful', StatusNotify.Success);
+                }, error => {
+                    this.errorMessage = <any>error;
+                    this.dialog_all.notify_message(JSON.parse(error._body).message, StatusNotify.Fail, null, true);
+                });
+            }
+        });
+    }
+  
+  # .ts
+(component define dialog)
+//dialog add
+@Component({
+    selector: 'dialog-add',
+    templateUrl: './dialog-add.component.html',
+    styleUrls: ['./dialog.component.css'],
+})
+export class DialogAddComponent implements OnInit {
+    @HostBinding('class.component-content') true;
+
+    ngOnInit() {
+        if (this.data.fields.button == undefined || Strings.isEmpty(this.data.fields.button.label)) {
+            this.data.fields['button'] = { label: 'OK' };
+        }
+    }
+    form_control = FormControl;
+    constructor(public dialog: MdDialog, public dialogRef: MdDialogRef<DialogAddComponent>, @Inject(MD_DIALOG_DATA) public data: any) {
+        //  this.dialogRef.updateSize('50%', '100px');
+    }
+    check_data() {
+        let array_data = this.data.fields.config;
+        for (var i = 0; i < array_data.length; i++) {
+            if (array_data[i].validate) {
+                if (Strings.isEmpty(this.data.fields.all_data[array_data[i].name])) {
+                    return;
+                }
+            }
+        }
+        this.dialogRef.close(true);
+    }
+}
+
+# component.html
+(define html for dialog)
+
+<div class="full-width-height" fxLayout="column">
+    <div md-dialog-title class="color-1 background-color-1">
+      <span fxFlex>{{data.title}}</span>
+      <button class="pm-icon-button hover-color-2" md-mini-fab md-dialog-close>
+        <md-icon> close </md-icon>
+      </button>
+    </div>
+  
+    <md-dialog-content fxFlex *ngFor="let field of data.fields.config">
+      <md-input-container fxLayout="column" *ngIf="field.type==form_control.Input || field.type==form_control.Password">
+        <input mdInput placeholder="{{field.label}}" [(ngModel)]="data.fields.all_data[field.name]" [type]="field.type==form_control.Input?'text':'password'">
+      </md-input-container>
+  
+      <!-- <md-input-container fxLayout="column"> -->
+        <!-- <md-select placeholder="{{field.label}}" [(ngModel)]="selectedDataSource" class="dialog_add_select" *ngIf="field.type==form_control.Select"> -->
+        <md-select placeholder="{{field.label}}" [(ngModel)]="data.fields.all_data[field.name]" class="dialog_add_select" *ngIf="field.type==form_control.Select">
+          <md-option *ngFor="let item of field.data" [value]="item">
+            {{ item }}
+          </md-option>
+        </md-select>
+      <!-- </md-input-container> -->
+    </md-dialog-content>
+  
+    <md-dialog-actions>
+      <div fxFlex></div>
+      <!-- <div class="dialog_add_before_button"></div> -->
+      <button md-button md-dialog-close>CANCEL</button>
+      <button md-button (click)="check_data()" class="button_ok_common">{{data.fields.button.label}}</button>
+  
+      <!-- <div class="dialog_add_bound_button">
+        <button md-button md-dialog-close>CANCEL</button>
+        <button md-button (click)="check_data()" class="button_ok_common">{{data.fields.button.label}}</button>
+      </div> -->
+    </md-dialog-actions>
+  </div>
+  
+  
