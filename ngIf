@@ -14,3 +14,6 @@
 <li *ngIf="animal">
     You chose: <i>{{animal}}</i>
 </li>
+
+# 
+{{row.status?'Active':'Deactive'}}
