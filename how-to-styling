@@ -9,4 +9,4 @@ user-current: a css class
 [style.backgroundColor]="color"
 
 # color
-[color]="'primary'"
+[color]="'primary'"(warn, accent)
