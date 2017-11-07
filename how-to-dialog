@@ -116,3 +116,5 @@ export class DialogAddComponent implements OnInit {
 # note:
 1. can write class define dialog in the same file .ts with file call dialog
 2. https://material.angular.io/components/dialog/overview
+3. <button md-button [md-dialog-close]="true"  [color]="'warn'">OK</button>
+(for OK button)
