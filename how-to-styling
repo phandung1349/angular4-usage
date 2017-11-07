@@ -1,4 +1,12 @@
+# class
 [class.user-current]="row.username==username"
 
 class: syntax
 user-current: a css class
+
+# style
+
+[style.backgroundColor]="color"
+
+# color
+[color]="'primary'"
