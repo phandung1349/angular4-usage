@@ -1,2 +1,3 @@
 # https://material.angular.io/components/snack-bar/overview
 
+# can call snackbar: snackBar.open(message, action, configSnackBar);
