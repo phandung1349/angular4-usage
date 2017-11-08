@@ -1,0 +1,113 @@
+# .html
+
+<td td-data-table-cell>
+          <div fxLayout="row">
+              <div class="material-switch pull-right">
+                  <input id="{{row.id}}" name="someSwitchOption001"
+                  type="checkbox" [checked]="row.status" (change)="change_status($event, row)">
+                  <label for="{{row.id}}" class="label-info notification_label"></label>
+                  <br/>{{row.status?'Active':'Deactive'}}
+              </div>
+          </div>
+        </td>
+        
+        
+# .css
+
+.material-switch > input[type="checkbox"] {
+    display: none;
+}
+
+.material-switch > label {
+    cursor: pointer;
+    height: 0px;
+    position: relative;
+    width: 40px;
+}
+
+.material-switch > label::before {
+    background: rgb(0, 0, 0);
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    content: '';
+    height: 16px;
+    margin-top: -8px;
+    position:absolute;
+    opacity: 0.3;
+    transition: all 0.4s ease-in-out;
+    width: 40px;
+}
+.material-switch > label::after {
+    background: rgb(255, 255, 255);
+    border-radius: 16px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    content: '';
+    height: 24px;
+    left: -4px;
+    margin-top: -8px;
+    position: absolute;
+    top: -4px;
+    transition: all 0.3s ease-in-out;
+    width: 24px;
+}
+.material-switch > input[type="checkbox"]:checked + label::before {
+    background: inherit;
+    opacity: 0.5;
+}
+.material-switch > input[type="checkbox"]:checked + label::after {
+    background: inherit;
+    left: 20px;
+}
+
+# .ts
+
+change_status(e, row) {
+    e.target.checked = !e.target.checked;
+    var dialogRef = this.dialog.open(UsersDialogChangeStatusComponent, {
+      width: '450px',
+      data: {
+        Status: row.status
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // this.setStatus(row);
+        let request_data = {
+          id: row.id,
+          status: !row.status,
+        }
+
+        this._UserService.changeStatus(request_data).then(response => {
+          this.getUsers(this.currentPage, this.selectedPageSize, this.sortBy, this.sortingOrder);
+          row.status = response.status;
+          this.setStatus(row);
+          this.dialog_all.notify_message('Change Status Successful', StatusNotify.Success);
+        }, error => {
+          this.dialog_all.notify_message('Change Status Fail', StatusNotify.Fail);
+        });
+      }
+    });
+  }
+  
+  
+  # .html define dialog
+  
+  <div class="full-width-height" fxLayout="column">
+  <div md-dialog-title class="color-1 background-color-1">
+    <span fxFlex>{{Status}} User</span>
+    <button class="pm-icon-button hover-color-2" md-mini-fab md-dialog-close [color]="'primary'">
+      <md-icon> close </md-icon>
+    </button>
+  </div>
+  <md-dialog-content fxFlex class="">
+    <h4 style="text-align: center;">Confirm! That you want to {{Status}} this user.</h4>
+  </md-dialog-content>
+	<md-dialog-actions>
+    <div fxFlex></div>
+    <button md-button md-dialog-close>CANCEL</button>
+    <button md-button [md-dialog-close]="true" class="btn-confirm">{{Status}}</button>
+  </md-dialog-actions>
+</div>
+
+
