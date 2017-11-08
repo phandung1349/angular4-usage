@@ -8,5 +8,8 @@ user-current: a css class
 
 [style.backgroundColor]="color"
 
+# [color]
+<button [color]="'primary'"(warn, accent)></button>
+
 # color
-[color]="'primary'"(warn, accent)
+<button color="primary"></button>
