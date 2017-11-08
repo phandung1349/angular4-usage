@@ -1,0 +1,49 @@
+# .component.ts
+(call dialog)
+
+@Component({
+    selector: 'notification-dialog-delete-row',
+    templateUrl: './dialog-delete-row.component.html',
+    styleUrls: ['./notification.component.css']
+})
+
+export class DialogDeleteRowComponent implements OnInit {
+    ngOnInit() { }
+}
+
+  # (function open)
+confirmDeleteNoti(row) {
+        var dialogRef = this.dialog.open(DialogDeleteRowComponent, {
+            width: '450px',
+            height: '200px'
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.delete_Noti(row.id);
+            }
+        });
+    }
+    
+# .component.html
+(define dialog)
+
+<div class="full-width-height" fxLayout="column">
+  <div md-dialog-title class="color-1 background-color-1">
+    <span fxFlex>Delete Notification</span>
+    <button class="pm-icon-button hover-color-2" md-mini-fab md-dialog-close  [color]="'primary'">
+      <md-icon> close </md-icon>
+    </button>
+  </div>
+  <md-dialog-content fxFlex class="">
+    <h4 style="text-align: center;">Confirm! That you want to delete this Notification.</h4>
+  </md-dialog-content>
+	<md-dialog-actions>
+    <div fxFlex></div>
+    <button md-button md-dialog-close>CANCEL</button>
+    <!-- Can optionally provide a result for the closing dialog. -->
+    <button md-button [md-dialog-close]="true"  class="btn-remove">OK</button>
+  </md-dialog-actions>
+</div>
+
+
