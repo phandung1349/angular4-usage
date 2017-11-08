@@ -1,6 +1,7 @@
 # .component.ts
 (call dialog)
 
+(# component define dialog)
 @Component({
     selector: 'notification-dialog-delete-row',
     templateUrl: './dialog-delete-row.component.html',
