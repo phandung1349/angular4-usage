@@ -1,0 +1,65 @@
+// const appRoutes: Routes = [
+//     {
+//         path: '',
+//         canActivateChild: [ LoginComponent ],
+//         children: [
+//             { path: Constants.APP_ROUTES.home, component: HomeComponent, data: { title: 'HOME' } },
+
+//             { path: Constants.APP_ROUTES.analytics, component: AnalyticsComponent, data: { title: 'Analytics' } },
+//             { path: Constants.APP_ROUTES.cbm, component: CBMComponent, data: { title: 'REAL TIME CBM' } },
+
+//             { path: Constants.APP_ROUTES.search, component: SearchComponent, data: { title: 'Search' } },
+//             { path: Constants.APP_ROUTES.dashboard, component: DashboardComponent, data: { title: 'Dashboard' } },
+//             { path: Constants.APP_ROUTES.notification, component: NotificationComponent, data: { title: 'Notification' } },
+//             { path: Constants.APP_ROUTES.notification_dialog_change_status, component: DialogChangeStatusComponent, data: { title: 'Confirmation' } },
+//             { path: Constants.APP_ROUTES.notification_delete_row, component: DialogDeleteRowComponent, data: { title: 'Confirmation' } },
+//             { path: Constants.APP_ROUTES.r_interface, component: RInterfaceComponent, data: { title: 'R-Interface' } },
+//             { path: Constants.APP_ROUTES.setting, component: SettingComponent, data: { title: 'Setting' } },
+//             { path: Constants.APP_ROUTES.setting_mailsettings, component: EmailSettingsComponent, data: { title: 'Email Settings' } },
+//             { path: Constants.APP_ROUTES.setting_mailsettings_dialog_submit, component: EmailSettingsDialogSubmitComponent, data: { title: 'Email Settings' } },
+//             { path: Constants.APP_ROUTES.setting_users, component: UsersComponent, data: { title: 'Users' } },
+//             { path: Constants.APP_ROUTES.setting_users_dialog_set_status, component: UsersDialogChangeStatusComponent, data: { title: 'Users' } },
+//             { path: Constants.APP_ROUTES.setting_users_dialog_delete, component: UsersDialogDeleteComponent, data: { title: 'Users' } },
+//             { path: Constants.APP_ROUTES.setting_users_add, component: AddUsersComponent, data: { title: 'New User' } },
+//             { path: Constants.APP_ROUTES.setting_users_edit_param, component: EditUsersComponent, data: { title: 'Edit User' } },
+//             { path: Constants.APP_ROUTES.setting_users_changepassword_param, component: ChangePasswordComponent, data: { title: 'Change Password' } },
+//             { path: Constants.APP_ROUTES.setting_users_resetpassword_param, component: ResetPasswordComponent, data: { title: 'Reset Password' } },
+//             { path: Constants.APP_ROUTES.setting_indices, component: IndicesComponent, data: { title: 'Indices' } },
+//             { path: Constants.APP_ROUTES.setting_indices_dialog_delete, component: IndicesDialogDeleteComponent, data: { title: 'Create Index' } },
+//             { path: Constants.APP_ROUTES.setting_create_index, component: CreateIndexComponent, data: { title: 'Create Index' } },
+//             { path: Constants.APP_ROUTES.setting_create_index_dialog_submit, component: CreateIndexDialogSubmitComponent, data: { title: 'Create Index' } },
+
+//             { path: Constants.APP_ROUTES.dashboard_detail_param, component: DashboardDetailComponent, data: { title: 'Dashboard Detail' } },
+//             { path: Constants.APP_ROUTES.dashboard_detail_dialog_add, component: DashboardDetailDialogAddComponent },
+
+//             { path: Constants.APP_ROUTES.setting_alerts, component: AlertsComponent, data: { title: 'Alerts' } },
+//             { path: Constants.APP_ROUTES.setting_alerts_dialog_change_status, component: DialogAlertChangeStatusComponent, data: { title: 'Alerts' } },
+//             { path: Constants.APP_ROUTES.setting_alerts_detail, component: AlertDetailComponent, data: { title: 'Alert Detail' } },
+//             { path: Constants.APP_ROUTES.search_dialog_save_to_dashboard, component: DialogSaveToDashBoardComponent, data: { title: 'Dialog Save To DashBoard' } },
+//             { path: Constants.APP_ROUTES.dashboard_dialog_edit_dashboard_name, component: DialogEditDashBoardComponent, data: { title: 'Edit DashBoard Name' } },
+//             { path: Constants.APP_ROUTES.dashboard_dialog_copy_dashboard, component: DialogCopyDashBoardComponent, data: { title: 'Copy DashBoard' } },
+//             { path: Constants.APP_ROUTES.dashboard_dialog_delete_dashboard, component: DialogDeleteDashBoardComponent, data: { title: 'Delete DashBoard' } },
+//             { path: Constants.APP_ROUTES.setting_datasources, component: DataSourceComponent, data: { title: 'Data Source' } },
+//             { path: Constants.APP_ROUTES.setting_appconfigs, component: AppConfigsComponent, data: { title: 'App Configs' } },
+//             { path: Constants.APP_ROUTES.setting_appconfigs_dialog_add, component: AppConfigDialogAddComponent, data: { title: 'App Configs' } },
+//             { path: Constants.APP_ROUTES.setting_appconfigs_dialog_edit, component: AppConfigDialogEditComponent, data: { title: 'App Configs' } },
+//             { path: Constants.APP_ROUTES.setting_appconfigs_dialog_delete, component: AppConfigDialogDeleteComponent, data: { title: 'App Configs' } },
+//             { path: Constants.APP_ROUTES.add_data_sources_step1, component: AddDataSourceStep1Component, data: { title: 'Add Data Source Step 1' } },
+//             { path: Constants.APP_ROUTES.add_data_sources_step2_param, component: AddDataSourceStep2Component, data: { title: 'Add Data Source Step 2' } },
+//             { path: Constants.APP_ROUTES.add_data_sources_step3, component: AddDataSourceStep3Component, data: { title: 'Add Data Source Step 3' } },
+
+//             { path: Constants.APP_ROUTES.table_covalent, component: TableCovalentComponent, data: { title: 'Table Covalent' } },
+//             { path: Constants.APP_ROUTES.table_covalent_dialog_add, component: TableCovalentDialogAddComponent, data: { title: 'Table Covalent' } },
+//             { path: Constants.APP_ROUTES.table_covalent_dialog_edit, component: TableCovalentDialogEditComponent, data: { title: 'Table Covalent' } },
+//             { path: Constants.APP_ROUTES.table_covalent_dialog_delete, component: TableCovalentDialogDeleteComponent },
+
+//             { path: Constants.APP_ROUTES.dialog_delete, component: DialogDeleteComponent },
+//             { path: Constants.APP_ROUTES.dialog_add, component: DialogAddComponent },
+//             { path: Constants.APP_ROUTES.dialog_message, component: DialogMessageComponent },
+//             { path: Constants.APP_ROUTES.notify_message, component: NotifyMessageComponent },
+//             { path: Constants.APP_ROUTES.loading, component: LoadingComponent },
+
+//             { path: '', redirectTo: '/home', pathMatch: 'full' }
+//         ]
+//     }
+// ];
