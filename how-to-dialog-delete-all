@@ -1,0 +1,77 @@
+# .component.ts
+(call dialog)
+
+(# function open dialog)
+deleteMany() {
+        let filterDelete = this.filteredData.filter(row => {
+            return row.isCheck;
+        }).map(row => {
+            return row.id;
+        });
+        let totalDelete = filterDelete.length;
+        if (totalDelete) {
+            let countDelete = 0;
+            let message = 'Do you want to delete these notifications?';
+
+            if (this.isCheckAll) {
+                message = 'Do you want to delete all notifications?';
+            }
+            var dialogRef = this.dialog.open(DialogDeleteComponent, {
+                width: '450px',
+                data: {
+                    title: 'Delete Notification',
+                    message: message,
+                }
+            });
+            dialogRef.afterClosed().subscribe(result => {
+                if (result) {
+                    if (this.isCheckAll) {
+                        this.isCheckAll = false;
+                    }
+                    this._NotificationService.delete_NotiList(filterDelete.join(',')).then(result => {
+                        this.getNoti(this.currentPage - 1, this.selectedPageSize, this.sortBy, this.sortingOrder);
+                        this.dialog_all.notify_message('Delete Successful', StatusNotify.Success);
+                    }, error => {
+                        this.dialog_all.notify_message('Delete Fail', StatusNotify.Fail);
+                    });
+                }
+            });
+        } else {
+            this.dialog_all.dialog_message('Notification', 'Please choose notification for delete.', StatusMessage.Warning);
+        }
+    }
+    
+  (# component define dialog)
+  @Component({
+    selector: 'dialog-delete',
+    templateUrl: './dialog-delete.component.html',
+    styleUrls: ['./dialog.component.css'],
+})
+export class DialogDeleteComponent implements OnInit {
+    @HostBinding('class.component-content') true;
+    ngOnInit() { }
+    constructor(public dialog: MdDialog, @Inject(MD_DIALOG_DATA) public data: any) { }
+}
+    
+  # .component.html
+  (define dialog)
+  
+  <div class="full-width-height" fxLayout="column">
+  <div md-dialog-title class="color-1 background-color-1">
+    <span fxFlex>{{data.title}}</span>
+    <button class="pm-icon-button hover-color-2" md-mini-fab md-dialog-close [color]="'primary'">
+      <md-icon> close </md-icon>
+    </button>
+  </div>
+  <md-dialog-content fxFlex class="">
+    <h4 style="text-align: center;">{{data.message}}</h4>
+  </md-dialog-content>
+	<md-dialog-actions>
+    <div fxFlex></div>
+    <button md-button md-dialog-close>CANCEL</button>
+    <!-- Can optionally provide a result for the closing dialog. -->
+    <button md-button [md-dialog-close]="true" class="btn-confirm">OK</button>
+  </md-dialog-actions>
+</div>
+
+
