@@ -7,5 +7,5 @@ todo:
 
 dialog: done
 
-material-switch pull-right: in progess
+material-switch pull-right: done 1/2
 
