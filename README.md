@@ -5,7 +5,7 @@ v43
 
 todo:
 
-dialog: done 1/2
+dialog: done
 
-material-switch pull-right: not started
+material-switch pull-right: in progess
 
