@@ -7,9 +7,9 @@ todo:
 
 dialog: done
 
-material-switch pull-right: done 1/2
+material-switch pull-right
 
-alerts-change-status
+alerts-change-status: in progress
 
 
 
