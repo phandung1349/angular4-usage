@@ -1,0 +1,15 @@
+# .html
+
+<td td-data-table-cell class="col-md-1">
+                    <div fxLayout="row">
+                        <div class="material-switch pull-right">
+                            <input id="{{item.id}}" name="someSwitchOption001" type="checkbox" [checked]="item.status" (change)="change_status($event,item)">
+                            <label for="{{item.id}}" class="label-info notification_label"></label>
+                            <br/>{{item.status?'Enable':'Disable'}}
+                        </div>
+                    </div>
+                </td>
+
+
+# use [checked]="item.status"
+(show status on front-end)
