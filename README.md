@@ -5,14 +5,6 @@ v43
 
 todo:
 
-dialog: done
-
-
-
-
-
-
-
 
 <timepicker></timepicker>
 https://mdbootstrap.com/angular/advanced/timepicker/
