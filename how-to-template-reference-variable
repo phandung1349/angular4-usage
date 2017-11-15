@@ -1,0 +1,6 @@
+<input (change)="true" #txt>
+{{txt.value}}
+
+
+
+#link: http://weblogs.thinktecture.com/thomas/2017/05/use-angular-template-reference-variables-anywhere-in-the-template-not.html
