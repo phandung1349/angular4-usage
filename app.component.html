@@ -1,0 +1,18 @@
+Welcome to {{title}}!
+<br>
+<a routerLink="/member">Members</a>
+<a routerLink="/product">Product</a>
+<router-outlet></router-outlet>
+<br>
+<!-- <ul>
+	<li *ngFor="let val of ly">{{val}}</li>
+</ul> -->
+<br>
+<p *ngIf="!isTrue; then latem else thotem">dung la</p>
+<!-- <p *ngIf="la!='lla' && true">la</p> -->
+<ng-template #latem>
+	<h1>la temp</h1>
+</ng-template>
+<ng-template #thotem>
+	<h1>tho temp</h1>
+</ng-template>
