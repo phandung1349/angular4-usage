@@ -1,5 +1,0 @@
-<md-select [(ngModel)]="color">
-  <md-option *ngFor="let color of colors" [value]="color.id">
-    {{ color.name }}
-  </md-option>
-</md-select>
