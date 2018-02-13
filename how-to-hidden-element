@@ -1,13 +1,6 @@
-1. use [hidden]
-
+1.
 <input [hidden]="">
 <p [hidden]=""><p/>
 
-2. use *ngIf=""
-
+2. 
 <input *ngIf="">
-
-
-GOAL: 
-
-to hide elements
