@@ -44,13 +44,13 @@ note:
 
 (built-in service)
 1. when use a built-in service, we need:
-  import in app.component.ts, aslo import in file that uses built-in service, aslo constructor
+  import in app.component.ts, aslo import in file that uses built-in service, must construct in Constructor(){}
   
 (custom service)
 2. when use a custom service, we need:
   + import in file that uses custom service: import { IpService } from "./ipservice.service";
   + providers: [IpService] (in @Component({}))
-  + constructor: constructor(private ipService : IpService)
+  + constructor: Constructor(private ipService : IpService)
 
 (write a custom service)
-3. see above
+3. See above
