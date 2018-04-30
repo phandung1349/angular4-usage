@@ -7,3 +7,6 @@
 
 #### ngModelChange
 (ngModelChange) event on input tag whether changes
+
+#### entryComponents
+entryComponents[]
