@@ -5,5 +5,5 @@
 #### HttpClient
 1. https://angular.io/api/common/http/HttpClient
 
-#### (ngModelChange) event
-(ngModelChange) event on input tag
+#### ngModelChange
+(ngModelChange) event on input tag whether changes
