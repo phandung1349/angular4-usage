@@ -8,4 +8,9 @@
 );
 1. data type: string, number, boolean, undefined, null, union
   let a: number | string | null | undefined;
-1. 
+1. forkJoin
+const callList = [];
+        callList.push(this._lifeStageService.getLifeEventListByType(this.eventType[0]));
+        callList.push(this._lifeStageService.getLifeEventListByType(this.eventType[1]));
+        Observable.forkJoin(callList).subscribe(
+            result => {});
