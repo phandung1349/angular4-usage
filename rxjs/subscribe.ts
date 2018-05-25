@@ -1,4 +1,9 @@
-const myObservable = Observable.of(1, 2, 3);
+// Code 1
+array = [...];
+obj = {...}
+// const myObservable = Observable.of(1, 2, 3);
+// const myObservable = Observable.of(array);
+// const myObservable = Observable.of(obj);
 
 // Create observer object
 const myObserver = {
@@ -9,3 +14,12 @@ const myObserver = {
 
 // Execute with the observer object
 myObservable.subscribe(myObserver);
+
+// Code 2
+.subscribe((next) => console.log(next), // next
+        (err) => console.log(err),
+        () => console.log('finish !!!')
+      );
+         
+         
+// Code 3
