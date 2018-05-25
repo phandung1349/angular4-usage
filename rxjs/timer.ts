@@ -1,3 +1,4 @@
+// Code Subscription
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -21,3 +22,23 @@ timer: Observable<any> = Observable.timer(2000, 1000);
 
   ngOnInit() {
   }
+
+
+// Code timer, take
+import { timer } from 'rxjs/observable/timer';
+import { take } from 'rxjs/operators';
+
+timeLimit = 10000;
+
+  constructor() {
+    timer(0, 990).pipe(
+      take(this.timeLimit),
+    )
+      .subscribe((next) => console.log(next), // next
+        (err) => console.log(err),
+        () => console.log('finish !!!')
+      );
+  }
+
+
+// Code 
