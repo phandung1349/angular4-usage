@@ -18,4 +18,4 @@ counter() {
 }
 
 
-// Code 3
+// Code 3 public, share operator
