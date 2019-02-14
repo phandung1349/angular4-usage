@@ -1,0 +1,13 @@
+EMAIL: /^[A-Za-z0-9\.\-_]+@[A-Za-z0-9\.\-_]+\.[A-Za-z0-9\.\-_]+$/,
+    NON_AlPHA : /[-!$%^&*()_+|~:`{}\[\]\;",'<>?,@#=.\/]/,
+    ALPHA_AND_NUMBER: /^[a-zA-Z0-9]+$/,
+    SPACE : /\s/,
+    LOWER_LETTERS : /[a-z]+/,
+    UPPER_LETTERS : /[A-Z]+/,
+    NUMBERS : /[0-9]+/g,
+    CONTAIN_NUMBER: /\d/,
+    ENGLISH : /^[a-zA-Z0-9?><:",,{}[\]\-_+;`!@#=.$%\^&*()|~'\/]*$/,
+    NUMBER_FORMAT : /[+-]?\d+(\.\d+)?/g,
+    FLOAT_NUMBER: /[+-]?([0-9]*[.])?[0-9]+/g,
+    INTEGER_NUMBER: /[+-]?[0-9]+/g,
+    JP_UPER_EN: /^[\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\uFF00-\uFFEF\u4E00-\u9FAF\u2605-\u2606\u2190-\u2195\u203BA-Z\.,\-']+$/, // All JP characters, A-Z, a-z, "." (Period), "," (comma), "-" (hyphen), "'" (apostrophe)
