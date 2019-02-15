@@ -31,3 +31,114 @@ const appRoutes: Routes = [
 # note: 
 1. we have file Constants.ts in which define APP_ROUTES
 2. route can or cannot title(data: { title: 'Process Analytics', isShowTitle: false })
+
+
+# example
+
+export const routes: Routes = [
+  {
+    path: 'qr',
+    loadChildren: 'app/pages/qr-login/qr-login.module#QRLoginModule'
+  },
+  {
+    path: 'operation-explanation',
+    loadChildren: 'app/pages/operation-explanation/operation-explanation.module#OperationExplanationModule'
+  },
+  {
+    path: 'sign-up',
+    loadChildren: 'app/pages/sign-up/sign-up.module#SignUpModule',
+    resolve: {
+      guest: GuestResolverService
+    }
+  },
+  {
+    path: 'upon-use',
+    loadChildren: 'app/pages/upon-use/upon-use.module#UponUseModule'
+  },
+  {
+    path: 'guidance',
+    loadChildren: 'app/pages/guidance/guidance.module#guidanceModule'
+  },
+  {
+    path: 'initial-value',
+    loadChildren: 'app/pages/initial-value/initial-value.module#initialValueModule'
+  },
+  {
+    path: 'statistics',
+    loadChildren: 'app/pages/statistics/statistics.module#statisticsModule'
+  },
+  {
+    path: 'style',
+    component: PagesComponent,
+    loadChildren: 'app/pages/styles/style.module#StyleModule',
+    canActivate: [StyleStageGuard]
+  },
+  {
+    path: '404',
+    // component: NotFoundComponent,
+    loadChildren: 'app/pages/page-404/page-404.module#Page404Module'
+  },
+  {
+    path: '503',
+    // component: NotFoundComponent,
+    loadChildren: 'app/pages/page-503/page-503.module#Page503Module'
+  },
+  {
+    path: 'external-error',
+    loadChildren: 'app/pages/page-external-error/page-external-error.module#PageExternalErrorModule'
+  },
+  {
+    path: 'pages',
+    component: PagesComponent,
+    resolve: {
+      guest: GuestResolverService
+    },
+    children: [
+      { path: 'reset-password', loadChildren: './home/home.module#HomeModule' },
+      {
+        path: 'life-stage',
+        loadChildren: './life-stage/life-stage.module#LifeStageModule',
+        canActivate: [LifeStageGuard]
+      },
+      {
+        path: 'money-map',
+        loadChildren: './money-map/money-map.module#MoneyMapModule',
+        canActivate: [MoneyMapGuard]
+      },
+      { path: 'easy-management', loadChildren: './easy-management/easy-management.module#EasyManagementModule' },
+      {
+        path: 'existing-assets',
+        loadChildren: './existing-assets/existing-assets.module#ExistingAssetsModule',
+        canActivate: [ExistingAssetsGuard],
+        resolve: {
+          guest: GuestResolverService
+        }
+      },
+      { path: 'faq', loadChildren: './faq/faq.module#FaqModule' },
+      {
+        path: 'transaction-provision',
+        // component: TransactionProvisionComponent
+        loadChildren: './transaction-provision/transaction-provision.module#TransactionProvisionModule',
+        resolve: {
+          guest: GuestResolverService
+        }
+      },
+      {
+        path: 'home',
+        loadChildren: './home/home.module#HomeModule',
+        canDeactivate: [HomeCanDeactivateGuard],
+        resolve: {
+          guest: GuestResolverService
+        }
+      },
+      {
+        path: ':routename/:key',
+        loadChildren: './home/home.module#HomeModule'
+      }
+    ]
+  },
+  {
+    path: 'pdf',
+    loadChildren: 'app/pdf/pdf.module#PdfModule'
+  },
+];
